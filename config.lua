@@ -2,7 +2,6 @@ Config = {}
 
 -- settings
 Config.OpenTime = 10000 -- in milliseconds
-Config.Cooldown = 3600 -- amount in seconds (3600 = 1hr)
 Config.MinLootBags = 1 -- minimum amount of loot bags per crate
 Config.MaxLootBags = 5 -- minimum amount of loot bags per crate
 Config.RewardChance = 90 -- change of getting a common lootbag reward (example 90 = 90% change of getting common loot)
