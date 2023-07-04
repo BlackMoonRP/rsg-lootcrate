@@ -2,6 +2,7 @@ local Translations = {
     error = {
         already_looted = 'crate already looted!',
         no_item = 'you don\'t have that item',
+        busy = 'you are busy doing something',
     },
     success = {
         lootcrate_reset = 'loot crates reset',

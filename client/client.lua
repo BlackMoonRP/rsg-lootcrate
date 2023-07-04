@@ -46,19 +46,23 @@ end)
 
 -- check if crate has been looted
 RegisterNetEvent('rsg-lootcrate:client:checklootcrate', function(name)
-    RSGCore.Functions.TriggerCallback('rsg-lootcrate:server:GetLootState', function(result)
-        if result == 0 then
-            busy = true
-            CrouchAnim()
-            Wait(6000)
-            ClearPedTasks(PlayerPedId())
-            TriggerServerEvent('rsg-lootcrate:server:givelootbag', 'lootbag')
-            TriggerServerEvent('rsg-lootcrate:server:setlooted', name)
-            busy = false
-        else
-            RSGCore.Functions.Notify(Lang:t('error.already_looted'), 'error')
-        end
-    end, name)
+    if busy == false then
+        RSGCore.Functions.TriggerCallback('rsg-lootcrate:server:GetLootState', function(result)
+            if result == 0 then
+                busy = true
+                CrouchAnim()
+                Wait(6000)
+                ClearPedTasks(PlayerPedId())
+                TriggerServerEvent('rsg-lootcrate:server:givelootbag', 'lootbag')
+                TriggerServerEvent('rsg-lootcrate:server:setlooted', name)
+                busy = false
+            else
+                RSGCore.Functions.Notify(Lang:t('error.already_looted'), 'error')
+            end
+        end, name)
+    else
+        RSGCore.Functions.Notify(Lang:t('error.busy'), 'error')
+    end
 end)
 ---------------------------------------------------------------------------------
 
